@@ -1,32 +1,16 @@
-import { View, Text, Button } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import styles from './HomeScreen.style'
+import {  Button } from 'react-native'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { ScreenNavigationProp } from '../../../../types'
-import { useFocusEffect } from '@react-navigation/native'
-import { getNote } from '../../../services/NoteStoreServices'
+import SavedNotesList from '../../../components/SavedNotesList/SavedNotesList'
 
 const HomeScreen = () => {
 
-    const navigation = useNavigation<ScreenNavigationProp>()
-    const [noteText, setnoteText] = useState<string>("")
-
-
-    
-
-    useFocusEffect(()=>{
-        getNote().then(result => setnoteText(result ?? ''))
-    })
 
     return (
         <>
-            <View>
-                <Text>{noteText}</Text>
-            </View>            
-            <Button
-                title='New Note'
-                onPress={() => navigation.navigate('EditNote')}
-            />
+            <SavedNotesList />
+            
 
         </>
     )

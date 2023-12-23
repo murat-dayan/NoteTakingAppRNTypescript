@@ -1,0 +1,1 @@
+export const eminered = "#f54b42"
